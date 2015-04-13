@@ -1,0 +1,6 @@
+numpy==1.9.2
+scipy
+scikit-learn
+nltk
+pandas==0.16.0
+beautifulsoup4
