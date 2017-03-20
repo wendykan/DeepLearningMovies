@@ -44,17 +44,12 @@ def makeFeatureVec(words, model, num_features):
     # Loop over each word in the review and, if it is in the model's
     # vocaublary, add its feature vector to the total
     for word in words:
-        
         if word in index2word_set:
-            
             nwords = nwords + 1.
-            
             featureVec = np.add(featureVec,model[word])
-    
     #
     # Divide the result by the number of words to get the average
     featureVec = np.divide(featureVec,nwords)
-    
     return featureVec
 
 
@@ -159,6 +154,8 @@ if __name__ == '__main__':
     model.most_similar("queen")
     model.most_similar("awful")
 
+
+    
     # ****** Create average vectors for the training and test sets
     #
     print "Creating average feature vecs for training reviews"
