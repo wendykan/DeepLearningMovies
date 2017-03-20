@@ -40,8 +40,7 @@ if __name__ == '__main__':
     print "Cleaning and parsing the training set movie reviews...\n"
     for i in xrange( 0, len(train["review"])):
         clean_train_reviews.append(" ".join(KaggleWord2VecUtility.review_to_wordlist(train["review"][i], True)))
-
-
+    
     # ****** Create a bag of words from the training set
     #
     print "Creating the bag of words...\n"
@@ -60,10 +59,16 @@ if __name__ == '__main__':
     # into feature vectors. The input to fit_transform should be a list of
     # strings.
     train_data_features = vectorizer.fit_transform(clean_train_reviews)
+    
+    print "====================="
+    #print train_data_features.shape[0], train_data_features.shape[1]
+    
+    #train_data_feature_matrix = np.zeros(shape=(25000, 5000))
 
+    print "====================="
     # Numpy arrays are easy to work with, so convert the result to an
     # array
-    train_data_features = train_data_features.toarray()
+    np.asarray(train_data_features)
 
     # ******* Train a random forest using the bag of words
     #
@@ -90,7 +95,8 @@ if __name__ == '__main__':
 
     # Get a bag of words for the test set, and convert to a numpy array
     test_data_features = vectorizer.transform(clean_test_reviews)
-    test_data_features = test_data_features.toarray()
+    
+    np.asarray(test_data_features)
 
     # Use the random forest to make sentiment label predictions
     print "Predicting test labels...\n"
@@ -103,5 +109,6 @@ if __name__ == '__main__':
     # Use pandas to write the comma-separated output file
     output.to_csv(os.path.join(os.path.dirname(__file__), 'data', 'Bag_of_Words_model.csv'), index=False, quoting=3)
     print "Wrote results to Bag_of_Words_model.csv"
+
 
 

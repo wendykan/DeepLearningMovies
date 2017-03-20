@@ -39,17 +39,22 @@ def makeFeatureVec(words, model, num_features):
     #
     # Index2word is a list that contains the names of the words in
     # the model's vocabulary. Convert it to a set, for speed
-    index2word_set = set(model.index2word)
+    index2word_set = set(model.wv.index2word)
     #
     # Loop over each word in the review and, if it is in the model's
     # vocaublary, add its feature vector to the total
     for word in words:
+        
         if word in index2word_set:
+            
             nwords = nwords + 1.
+            
             featureVec = np.add(featureVec,model[word])
+    
     #
     # Divide the result by the number of words to get the average
     featureVec = np.divide(featureVec,nwords)
+    
     return featureVec
 
 
@@ -71,7 +76,7 @@ def getAvgFeatureVecs(reviews, model, num_features):
            print "Review %d of %d" % (counter, len(reviews))
        #
        # Call the function (defined above) that makes average feature vectors
-       reviewFeatureVecs[counter] = makeFeatureVec(review, model, \
+       reviewFeatureVecs[int(counter)] = makeFeatureVec(review, model, \
            num_features)
        #
        # Increment the counter
@@ -154,7 +159,9 @@ if __name__ == '__main__':
     model.most_similar("queen")
     model.most_similar("awful")
 
-
+    print "========================="
+    #help(model.wv.index2word)
+    print "========================="
 
     # ****** Create average vectors for the training and test sets
     #
