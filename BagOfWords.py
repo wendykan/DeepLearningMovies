@@ -60,12 +60,6 @@ if __name__ == '__main__':
     # strings.
     train_data_features = vectorizer.fit_transform(clean_train_reviews)
     
-    print "====================="
-    #print train_data_features.shape[0], train_data_features.shape[1]
-    
-    #train_data_feature_matrix = np.zeros(shape=(25000, 5000))
-
-    print "====================="
     # Numpy arrays are easy to work with, so convert the result to an
     # array
     np.asarray(train_data_features)
@@ -95,7 +89,6 @@ if __name__ == '__main__':
 
     # Get a bag of words for the test set, and convert to a numpy array
     test_data_features = vectorizer.transform(clean_test_reviews)
-    
     np.asarray(test_data_features)
 
     # Use the random forest to make sentiment label predictions
