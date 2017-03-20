@@ -159,10 +159,6 @@ if __name__ == '__main__':
     model.most_similar("queen")
     model.most_similar("awful")
 
-    print "========================="
-    #help(model.wv.index2word)
-    print "========================="
-
     # ****** Create average vectors for the training and test sets
     #
     print "Creating average feature vecs for training reviews"
