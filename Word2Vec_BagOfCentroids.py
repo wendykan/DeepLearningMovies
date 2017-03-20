@@ -61,7 +61,7 @@ if __name__ == '__main__':
 
     # Set "k" (num_clusters) to be 1/5th of the vocabulary size, or an
     # average of 5 words per cluster
-    word_vectors = model.syn0
+    word_vectors = model.wv.syn0
     num_clusters = word_vectors.shape[0] / 5
 
     # Initalize a k-means object and use it to extract centroids
@@ -77,7 +77,7 @@ if __name__ == '__main__':
 
     # Create a Word / Index dictionary, mapping each vocabulary word to
     # a cluster number
-    word_centroid_map = dict(zip( model.index2word, idx ))
+    word_centroid_map = dict(zip( model.wv.index2word, idx ))
 
     # Print the first ten clusters
     for cluster in xrange(0,10):
