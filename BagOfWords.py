@@ -63,7 +63,7 @@ if __name__ == '__main__':
 
     # Numpy arrays are easy to work with, so convert the result to an
     # array
-    train_data_features = train_data_features.toarray()
+    np.asarray(train_data_features)
 
     # ******* Train a random forest using the bag of words
     #
@@ -90,7 +90,7 @@ if __name__ == '__main__':
 
     # Get a bag of words for the test set, and convert to a numpy array
     test_data_features = vectorizer.transform(clean_test_reviews)
-    test_data_features = test_data_features.toarray()
+    np.asarray(test_data_features)
 
     # Use the random forest to make sentiment label predictions
     print "Predicting test labels...\n"
